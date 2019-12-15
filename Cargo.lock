@@ -351,7 +351,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "shaku-rocket-test"
+name = "shaku-rocket-example"
 version = "0.1.0"
 dependencies = [
  "rocket 0.4.2 (registry+https://github.com/rust-lang/crates.io-index)",

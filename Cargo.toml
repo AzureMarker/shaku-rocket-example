@@ -1,5 +1,5 @@
 [package]
-name = "shaku-rocket-test"
+name = "shaku-rocket-example"
 version = "0.1.0"
 authors = ["Mcat12 <newtoncat12@yahoo.com>"]
 edition = "2018"
