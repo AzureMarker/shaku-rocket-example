@@ -12,11 +12,10 @@ use std::sync::Mutex;
 
 #[get("/")]
 fn index(container: State<Mutex<Container>>) -> String {
+    let mut container = container.lock().unwrap();
     let writer = container
-        .lock()
-        .unwrap()
         .with_typed_parameter::<dyn IDateWriter, String>("June 19".to_string())
-        .resolve::<dyn IDateWriter>()
+        .resolve_ref::<dyn IDateWriter>()
         .unwrap();
 
     writer.write_date();
