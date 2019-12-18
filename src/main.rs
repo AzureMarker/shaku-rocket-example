@@ -5,7 +5,7 @@ extern crate rocket;
 
 mod autofac;
 
-use crate::autofac::{ConsoleOutput, IDateWriter, IOutput, TodayWriter};
+use crate::autofac::{ConsoleOutput, IDateWriter, TodayWriter};
 use rocket::State;
 use shaku::{Container, ContainerBuilder};
 use std::sync::Mutex;
@@ -27,12 +27,9 @@ fn main() {
 
     builder
         .register_type::<ConsoleOutput>()
-        .as_type::<dyn IOutput>()
         .with_named_parameter("prefix", "PREFIX > ".to_string())
         .with_typed_parameter::<usize>(117 as usize);
-    builder
-        .register_type::<TodayWriter>()
-        .as_type::<dyn IDateWriter>();
+    builder.register_type::<TodayWriter>();
     let container = builder.build().unwrap();
 
     rocket::ignite()
