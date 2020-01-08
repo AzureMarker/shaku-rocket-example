@@ -5,8 +5,8 @@ authors = ["Mcat12 <newtoncat12@yahoo.com>"]
 edition = "2018"
 
 [dependencies]
-shaku = { path = "../shaku/shaku" }
-shaku_derive = { path = "../shaku/shaku_derive" }
+shaku = "0.3.1"
+shaku_derive = "0.3.1"
 rocket = "0.4.2"
 
 [patch.crates-io]
