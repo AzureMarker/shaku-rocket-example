@@ -3,18 +3,19 @@
 #[macro_use]
 extern crate rocket;
 
-mod autofac;
+use std::sync::Mutex;
 
-use crate::autofac::{ConsoleOutput, IDateWriter, TodayWriter};
 use rocket::State;
 use shaku::{Container, ContainerBuilder};
-use std::sync::Mutex;
+
+use crate::autofac::{ConsoleOutput, IDateWriter, TodayWriter};
+
+mod autofac;
 
 #[get("/")]
 fn index(container: State<Mutex<Container>>) -> String {
     let mut container = container.lock().unwrap();
     let writer = container
-        .with_typed_parameter::<dyn IDateWriter, String>("June 19".to_string())
         .resolve_ref::<dyn IDateWriter>()
         .unwrap();
 
@@ -29,7 +30,9 @@ fn main() {
         .register_type::<ConsoleOutput>()
         .with_named_parameter("prefix", "PREFIX > ".to_string())
         .with_typed_parameter::<usize>(117 as usize);
-    builder.register_type::<TodayWriter>();
+    builder
+        .register_type::<TodayWriter>()
+        .with_typed_parameter::<String>("June 19".to_string());
     let container = builder.build().unwrap();
 
     rocket::ignite()

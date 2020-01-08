@@ -406,7 +406,6 @@ name = "shaku_derive"
 version = "0.3.1"
 dependencies = [
  "anymap",
- "log 0.3.9",
  "proc-macro2 1.0.6",
  "quote 1.0.2",
  "shaku_internals",
