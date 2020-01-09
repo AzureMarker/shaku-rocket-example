@@ -14,7 +14,7 @@ mod autofac;
 
 #[get("/")]
 fn index(container: State<Mutex<Container>>) -> String {
-    let mut container = container.lock().unwrap();
+    let container = container.lock().unwrap();
     let writer = container
         .resolve_ref::<dyn IDateWriter>()
         .unwrap();
