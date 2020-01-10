@@ -399,6 +399,7 @@ dependencies = [
  "rocket",
  "shaku",
  "shaku_derive",
+ "shaku_rocket",
 ]
 
 [[package]]
@@ -415,6 +416,14 @@ dependencies = [
 [[package]]
 name = "shaku_internals"
 version = "0.2.1"
+
+[[package]]
+name = "shaku_rocket"
+version = "0.1.0"
+dependencies = [
+ "rocket",
+ "shaku",
+]
 
 [[package]]
 name = "smallvec"

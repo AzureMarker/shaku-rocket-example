@@ -3,19 +3,15 @@
 #[macro_use]
 extern crate rocket;
 
-use rocket::State;
-use shaku::{Container, ContainerBuilder};
+use shaku::ContainerBuilder;
+use shaku_rocket::Inject;
 
 use crate::autofac::{ConsoleOutput, IDateWriter, TodayWriter};
 
 mod autofac;
 
 #[get("/")]
-fn index(container: State<Container>) -> String {
-    let writer = container
-        .resolve_ref::<dyn IDateWriter>()
-        .unwrap();
-
+fn index(writer: Inject<dyn IDateWriter>) -> String {
     writer.write_date();
     writer.get_date()
 }

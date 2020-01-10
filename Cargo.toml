@@ -7,9 +7,11 @@ edition = "2018"
 [dependencies]
 shaku = "0.3.1"
 shaku_derive = "0.3.1"
+shaku_rocket = "0.1.0"
 rocket = "0.4.2"
 
 [patch.crates-io]
 shaku = { path = "../shaku/shaku" }
 shaku_internals = { path = "../shaku/shaku_internals" }
 shaku_derive = { path = "../shaku/shaku_derive" }
+shaku_rocket = { path = "../shaku/shaku_rocket" }
