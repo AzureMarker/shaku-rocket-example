@@ -3,8 +3,6 @@
 #[macro_use]
 extern crate rocket;
 
-use std::sync::Mutex;
-
 use rocket::State;
 use shaku::{Container, ContainerBuilder};
 
@@ -13,8 +11,7 @@ use crate::autofac::{ConsoleOutput, IDateWriter, TodayWriter};
 mod autofac;
 
 #[get("/")]
-fn index(container: State<Mutex<Container>>) -> String {
-    let container = container.lock().unwrap();
+fn index(container: State<Container>) -> String {
     let writer = container
         .resolve_ref::<dyn IDateWriter>()
         .unwrap();
@@ -36,7 +33,7 @@ fn main() {
     let container = builder.build().unwrap();
 
     rocket::ignite()
-        .manage(Mutex::new(container))
+        .manage(container)
         .mount("/", routes![index])
         .launch();
 }
