@@ -64,6 +64,7 @@ impl IDateWriter for TodayWriter {
     }
 }
 
+#[cfg(test)]
 mod tests {
     use shaku::{ContainerBuildContext, ContainerBuilder, Error};
     use shaku::parameter::ParameterMap;
