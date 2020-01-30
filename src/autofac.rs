@@ -66,8 +66,8 @@ impl IDateWriter for TodayWriter {
 
 #[cfg(test)]
 mod tests {
-    use shaku::{ContainerBuildContext, ContainerBuilder, Error};
     use shaku::parameter::ParameterMap;
+    use shaku::{ContainerBuildContext, ContainerBuilder, Error};
 
     use crate::autofac::{IDateWriter, IOutput, MockIOutput, TodayWriter};
 
