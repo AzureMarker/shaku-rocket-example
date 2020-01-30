@@ -82,7 +82,7 @@ mod tests {
                 .times(1)
                 .returning(|content| format!("PREFIX: {}", content));
 
-            build_context.insert_resolved_component::<dyn IOutput>(Box::new(mock));
+            build_context.insert::<dyn IOutput>(Box::new(mock));
             Ok(())
         };
         let dependencies = Vec::new();
